@@ -14,7 +14,14 @@ spec:
     singular: htmlview
   scope: Namespaced
   versions:
-  - name: v1
+  - additionalPrinterColumns:
+    - jsonPath: .spec.replicas
+      name: REPLICAS
+      type: integer
+    - jsonPath: .status
+      name: STATUS
+      type: string
+    name: v1
     schema:
       openAPIV3Schema:
         description: HtmlView is the Schema for the htmlviews API
@@ -34,14 +41,26 @@ spec:
           spec:
             description: HtmlViewSpec defines the desired state of HtmlView
             properties:
-              foo:
-                description: Foo is an example field of HtmlView. Edit htmlview_types.go
-                  to remove/update
-                type: string
+              html:
+                additionalProperties:
+                  type: string
+                description: Html contains HTML file
+                type: object
+              port:
+                default: 80
+                description: Port is the ingress port.
+                type: integer
+              replicas:
+                default: 1
+                description: Replicas is the number of pods.
+                type: integer
             type: object
           status:
             description: HtmlViewStatus defines the observed state of HtmlView
-            type: object
+            enum:
+            - NotReady
+            - Running
+            type: string
         type: object
     served: true
     storage: true

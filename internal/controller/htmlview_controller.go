@@ -36,6 +36,11 @@ type HtmlViewReconciler struct {
 //+kubebuilder:rbac:groups=view.ty-bnn.github.io,resources=htmlviews,verbs=get;list;watch;create;update;patch;delete
 //+kubebuilder:rbac:groups=view.ty-bnn.github.io,resources=htmlviews/status,verbs=get;update;patch
 //+kubebuilder:rbac:groups=view.ty-bnn.github.io,resources=htmlviews/finalizers,verbs=update
+//+kubebuilder:rbac:groups=core,resources=configmaps,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=core,resources=services,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=networking.k8s.io,resources=ingresses,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=core,resources=events,verbs=create;update;patch
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.

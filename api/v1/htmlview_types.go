@@ -25,21 +25,36 @@ import (
 
 // HtmlViewSpec defines the desired state of HtmlView
 type HtmlViewSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	// Html contains HTML file
+	//+kubebuilder:validation:Required
+	Html map[string]string `json:"html,omitempty"`
 
-	// Foo is an example field of HtmlView. Edit htmlview_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// Replicas is the number of pods.
+	// +kubebuilder:default=1
+	// +optional
+	Replicas int `json:"replicas,omitempty"`
+
+	// Port is the ingress port.
+	// +kubebuilder:default=80
+	// +optional
+	Port int `json:"port,omitempty"`
 }
+
+// TODO: statusを構造体で扱う
 
 // HtmlViewStatus defines the observed state of HtmlView
-type HtmlViewStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-}
+// +kubebuilder:validation:Enum=NotReady;Running
+type HtmlViewStatus string
+
+const (
+	HtmlViewNotReady = HtmlViewStatus("NotReady")
+	HtmlViewRunning  = HtmlViewStatus("Running")
+)
 
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
+//+kubebuilder:printcolumn:name="REPLICAS",type="integer",JSONPath=".spec.replicas"
+//+kubebuilder:printcolumn:name="STATUS",type="string",JSONPath=".status"
 
 // HtmlView is the Schema for the htmlviews API
 type HtmlView struct {
