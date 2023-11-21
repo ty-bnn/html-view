@@ -9,4 +9,18 @@ metadata:
     app.kubernetes.io/created-by: html-view
   name: htmlview-sample
 spec:
-  # TODO(user): Add fields here
+  html:
+    index.html: |
+      <!DOCTYPE html>
+      <html>
+        <head>
+        <title>Welcome to My WebSite!</title>
+        </head>
+        <body>
+          <h1>Welcome to My WebSite!</h1>
+          <p>This file is delivered by ty-bnn.</p>
+          <p><em>Thank you for coming My WebSite.</em></p>
+        </body>
+      </html>
+  replicas: 2
+  port: 8080
