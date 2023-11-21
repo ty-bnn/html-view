@@ -1,0 +1,27 @@
+# permissions for end users to view htmlviews.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: htmlview-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: html-view
+    app.kubernetes.io/part-of: html-view
+    app.kubernetes.io/managed-by: kustomize
+  name: htmlview-viewer-role
+rules:
+- apiGroups:
+  - view.ty-bnn.github.io
+  resources:
+  - htmlviews
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - view.ty-bnn.github.io
+  resources:
+  - htmlviews/status
+  verbs:
+  - get

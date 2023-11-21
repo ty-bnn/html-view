@@ -1,0 +1,12 @@
+apiVersion: view.ty-bnn.github.io/v1
+kind: HtmlView
+metadata:
+  labels:
+    app.kubernetes.io/name: htmlview
+    app.kubernetes.io/instance: htmlview-sample
+    app.kubernetes.io/part-of: html-view
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: html-view
+  name: htmlview-sample
+spec:
+  # TODO(user): Add fields here
