@@ -32,12 +32,12 @@ type HtmlViewSpec struct {
 	// Replicas is the number of pods.
 	// +kubebuilder:default=1
 	// +optional
-	Replicas int `json:"replicas,omitempty"`
+	Replicas int32 `json:"replicas,omitempty"`
 
 	// Port is the ingress port.
 	// +kubebuilder:default=80
 	// +optional
-	Port int `json:"port,omitempty"`
+	Port int32 `json:"port,omitempty"`
 }
 
 // TODO: statusを構造体で扱う

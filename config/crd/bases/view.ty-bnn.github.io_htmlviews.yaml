@@ -49,10 +49,12 @@ spec:
               port:
                 default: 80
                 description: Port is the ingress port.
+                format: int32
                 type: integer
               replicas:
                 default: 1
                 description: Replicas is the number of pods.
+                format: int32
                 type: integer
             type: object
           status:
